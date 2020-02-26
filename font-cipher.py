@@ -13,7 +13,7 @@ extension = sys.argv[1].split('.')[-1]
 # generate random substitutions
 normal = [l for l in ascii_letters]
 rand = [l for l in ascii_letters]
-shuffle(rand)
+shuffle(rand) # modify in place
 subs = { x: y for x, y in zip(normal, rand)}
 
 if extension == 'ttf':
@@ -42,7 +42,7 @@ elif extension == 'ttx':
     font_root = ET.parse(sys.argv[1]).getroot()
     for letter in font_root.iter('map'):
         if letter.attrib['name'] in normal:
-            # reverse map with hex key
+            # reverse map keys by cmap hex code
             subs[chr(int(''.join(letter.attrib['code'][-2::]), 16))] = letter.attrib['name']
 
 if len(sys.argv) > 2:
