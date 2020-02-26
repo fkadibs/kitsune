@@ -10,9 +10,9 @@ if len(sys.argv) < 2:
 
 # generate random substitutions
 normal = [l for l in ascii_letters]
-subs = [l for l in ascii_letters]
-shuffle(subs)
-cmap = { x: y for x, y in zip(normal, subs)}
+rand = [l for l in ascii_letters]
+shuffle(rand)
+subs = { x: y for x, y in zip(normal, rand)}
 
 # convert source to xml
 print('[+] Loading file...')
@@ -24,8 +24,8 @@ print('[+] Applying substitutions...')
 font_tree = ET.parse('tmp.xml')
 font_root = font_tree.getroot()
 for letter in font_root.iter('map'):
-    if letter.attrib['name'] in cmap.keys():
-        letter.set('name', cmap[letter.attrib['name']])
+    if letter.attrib['name'] in subs.keys():
+        letter.set('name', subs[letter.attrib['name']])
 font_tree.write('tmp.xml')
 
 # convert to ttf
@@ -39,5 +39,5 @@ os.remove('tmp.xml')
 
 if len(sys.argv) > 2:
     print('[+] Ciphertext:')
-    output_string = ''.join(cmap[l] if l in cmap.keys() else l for l in sys.argv[2])
+    output_string = ''.join(subs[l] if l in subs.keys() else l for l in sys.argv[2])
     print(output_string)
