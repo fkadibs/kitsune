@@ -15,18 +15,21 @@ shuffle(subs)
 cmap = { x: y for x, y in zip(normal, subs)}
 
 # convert source to xml
+print('[+] Loading file...')
 font = TTFont(sys.argv[1])
 font.saveXML('tmp.xml')
 
 # apply the substitutions
+print('[+] Applying substitutions...')
 font_tree = ET.parse('tmp.xml')
 font_root = font_tree.getroot()
-for code in font_root.iter('map'):
-    if code.attrib['name'] in cmap.keys():
-        code.set('name', cmap[code.attrib['name']])
+for letter in font_root.iter('map'):
+    if letter.attrib['name'] in cmap.keys():
+        letter.set('name', cmap[letter.attrib['name']])
 font_tree.write('tmp.xml')
 
 # convert to ttf
+print('[+] Writing to disk...')
 font = TTFont()
 font.importXML('tmp.xml')
 font.save('output.ttf')
@@ -35,5 +38,6 @@ font.save('output.ttf')
 os.remove('tmp.xml')
 
 if len(sys.argv) > 2:
+    print('[+] Ciphertext:')
     output_string = ''.join(cmap[l] if l in cmap.keys() else l for l in sys.argv[2])
     print(output_string)
