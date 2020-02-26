@@ -17,11 +17,11 @@ You can create a cipher font by specifying a TrueType file, generating `output.t
 
 ```console
 $ font-cipher.py Roboto.ttf "Click here to reset your password"
-[+] Loading file...
-[+] Applying substitutions...
-[+] Writing to disk...
+[+] Loading source font...
+[+] Generating .ttx file...
+[+] Generating .ttf file...
 
-KeYsR NMHM vE HMrMv VEwH QGrrXEHU
+KsbEu mfJf LZ JfpfL YZTJ iCpphZJw
 ```
 
 You can generate ciphertex from an existing cipher font directly from the `.ttx` file, providing a string as a command-line argument.
@@ -29,6 +29,6 @@ You can generate ciphertex from an existing cipher font directly from the `.ttx`
 ```console
 $ font-cipher.py output.ttx "Creating more ciphertext"
 
-KHMGvYIp oEHM sYQNMHvMCv
+KJfCLbgB RZJf EbimfJLfAL
 ```
 
