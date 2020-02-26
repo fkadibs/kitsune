@@ -1,5 +1,5 @@
 # Font-Cipher
-This is a PoC that generates a randomized substitution cipher font that can be used to bypass static analysis for red team/penetration testing engagements. Static analysis scanners will see random ASCII characters but, the text will render as a human-readable string in the client.
+This is a PoC that generates a randomized substitution cipher font that can be used to bypass static analysis for red team/penetration testing engagements. Static analysis scanners will see random ASCII characters, but clients will render human-readable text.
 
 ### Installation
 
