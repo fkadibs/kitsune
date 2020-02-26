@@ -1,4 +1,4 @@
-# Kitsune
+# 🦊 Kitsune
 
 Kitsune is a tool for generating randomized substitution cipher fonts that can be used to bypass static analysis for red team/penetration testing engagements. Static analysis scanners will see random ASCII characters, but clients will render human-readable text.
 
