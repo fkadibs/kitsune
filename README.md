@@ -16,7 +16,13 @@ $ font-cipher.py <filename> [text]
 
 Specify a TrueType file to generate an `output.ttf` file. Optionally, provide a string of text to convert to ciphertext.
 
+### Example
+
 ```console
 $ font-cipher.py Roboto.ttf "This is a test"
-ACSY SY y hOYh
+[+] Loading file...
+[+] Applying substitutions...
+[+] Writing to disk...
+[+] Ciphertext:
+uaYw Yw s GvwG
 ```
