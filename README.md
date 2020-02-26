@@ -13,9 +13,7 @@ $ pip install -r requirements.txt
 $ font-cipher.py <filename> [text]
 ```
 
-You can create a cipher font by specifying a TrueType file, generating `output.ttf` and `output.ttx` files. Optionally, provide a string of text to convert to ciphertext. You can generate ciphertex from a cipher font by specifying a `.ttx` file and providing a string as a command-line argument.
-
-### Examples
+You can create a cipher font by specifying a TrueType file, generating `output.ttf` and `output.ttx` files. Optionally, provide a string of text to convert to ciphertext.
 
 ```console
 $ font-cipher.py Roboto.ttf "Click here to reset your password"
@@ -26,10 +24,11 @@ $ font-cipher.py Roboto.ttf "Click here to reset your password"
 KeYsR NMHM vE HMrMv VEwH QGrrXEHU
 ```
 
+You can generate ciphertex from an existing cipher font directly from the `.ttx` file, providing a string as a command-line argument.
+
 ```console
 $ font-cipher.py output.ttx "Creating more ciphertext"
 
 KHMGvYIp oEHM sYQNMHvMCv
 ```
-
 
