@@ -11,8 +11,8 @@ if len(sys.argv) < 2:
 # generate random substitutions
 normal = [l for l in ascii_letters]
 rand = [l for l in ascii_letters]
-shuffle(rand)
-subs = { x: y for x, y in zip(normal, rand)}
+shuffle(rand) # modify in place
+subs = { x: y for x, y in zip(normal, rand) }
 
 # convert source to xml
 print('[+] Loading file...')
