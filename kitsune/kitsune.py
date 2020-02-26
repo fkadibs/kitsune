@@ -43,8 +43,10 @@ def main():
         font_root = ET.parse(sys.argv[1]).getroot()	
         for letter in font_root.iter('map'):	
             if letter.attrib['name'] in normal:	
-                # reverse map keys by cmap hex code	
-                subs[chr(int(''.join(letter.attrib['code'][-2::]), 16))] = letter.attrib['name']	
+                # reverse map keys by cmap hex code
+                hex_code = ''.join(letter.attrib['code'][-2::])
+                ascii_key = chr(int(hex_code, 16))
+                subs[ascii_key] = letter.attrib['name']
 
     if len(sys.argv) > 2:	
         print('\n' + ''.join(subs[l] if l in subs.keys() else l for l in sys.argv[2]))
