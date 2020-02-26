@@ -1,3 +1,10 @@
+# font extensions
+*.xml
+*.ttf
+*.woff
+*.woff2
+*.ttx
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
