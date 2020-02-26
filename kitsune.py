@@ -6,7 +6,7 @@ import sys
 import os
 
 if len(sys.argv) < 2:
-    exit('Usage: font-cipher.py <filename> [text]')
+    exit('Usage: kitsune <filename> [text]')
 
 extension = sys.argv[1].split('.')[-1]
 
