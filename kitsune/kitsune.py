@@ -13,7 +13,8 @@ parser.add_argument('-o', action='store', metavar='FILE', default='output', help
 parser.add_argument('-w', action='store_true', help='generate webfont')
 args = parser.parse_args()
 
-extension = args.filename.split('.')[-1]
+EXT = args.filename.split('.')[-1]
+OUT_TTX, OUT_TTF, OUT_WOF = (args.o + i for i in ['.ttx', '.ttf','.woff2'])
 
 # generate random substitutions	
 normal = [l for l in ascii_letters]	
@@ -21,40 +22,44 @@ rand = [l for l in ascii_letters]
 shuffle(rand) # modify in place	
 subs = { x: y for x, y in zip(normal, rand)}	
 
+
 def main():
-    if extension == 'ttf':	
+    if EXT == 'ttf':	
         # convert source to xml	
-        print('[+] Generating {}.ttx file..'.format(args.o))
+        print('[+] Loading {}..'.format(args.filename))
         font = TTFont(args.filename)	
-        font.saveXML(args.o + '.ttx')	
+        font.saveXML(OUT_TTX)	
         
         # parsing XML
-        font_tree = ET.parse(args.o + '.ttx')	
-        font_root = font_tree.getroot()	
+        print('[+] Generating {} file...'.format(OUT_TTX))
+        font_tree = ET.parse(OUT_TTX)	
+        font_root = font_tree.getroot()
+
         for letter in font_root.iter('map'):	
             if letter.attrib['name'] in subs.keys():	
-                letter.set('name', subs[letter.attrib['name']])	
-        font_tree.write(args.o + '.ttx')	
+                letter.set('name', subs[letter.attrib['name']])
+        
+        font_tree.write(OUT_TTX)	
 
         # convert to ttf	
-        print('[+] Generating {}.ttf file...'.format(args.o))	
+        print('[+] Generating {} file...'.format(OUT_TTF))	
         font = TTFont()	
-        font.importXML(args.o + '.ttx')	
-        font.save(args.o + '.ttf')
+        font.importXML(OUT_TTX)	
+        font.save(OUT_TTF)
 
         if args.w:
-            print('[+] Generating {}.woff2 file...'.format(args.o))
-            woff2.compress(input_file=args.o +'.ttf', output_file=args.o + '.woff2')
+            print('[+] Generating {} file...'.format(OUT_WOF))
+            woff2.compress(input_file=OUT_TTF, output_file=OUT_WOF)
 
-    elif extension == 'ttx':	
+    elif EXT == 'ttx':	
         # load the xml	
-        font_root = ET.parse(args.filename).getroot()	
+        font_root = ET.parse(args.filename).getroot()
+
         for letter in font_root.iter('map'):	
             if letter.attrib['name'] in normal:	
                 # reverse map keys by cmap hex code
                 hex_code = ''.join(letter.attrib['code'][-2::])
-                ascii_key = chr(int(hex_code, 16))
-                subs[ascii_key] = letter.attrib['name']
+                subs[chr(int(hex_code, 16))] = letter.attrib['name']
 
     if args.c:	
         print('\n' + ''.join(subs[l] if l in subs.keys() else l for l in args.c))
