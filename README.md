@@ -27,8 +27,6 @@ optional arguments:
 
 Generate a cipher font from an existing TrueType file, which will create `output.ttf` and `output.ttx` files. 
 
-Optionally, you can specify an output filename or provide a string of text to convert to ciphertext.
-
 ```console
 $ kitsune Roboto.ttf -o example -c "Click here to reset your password"
 [+] Loading source font...
