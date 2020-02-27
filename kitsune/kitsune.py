@@ -24,12 +24,11 @@ subs = { x: y for x, y in zip(normal, rand)}
 def main():
     if extension == 'ttf':	
         # convert source to xml	
-        print('[+] Loading file...')	
+        print('[+] Generating .ttx file..')
         font = TTFont(args.filename)	
         font.saveXML(args.o + '.ttx')	
-
-        # apply the substitutions	
-        print('[+] Applying substitutions...')	
+        
+        # parsing XML
         font_tree = ET.parse(args.o + '.ttx')	
         font_root = font_tree.getroot()	
         for letter in font_root.iter('map'):	
@@ -38,12 +37,13 @@ def main():
         font_tree.write(args.o + '.ttx')	
 
         # convert to ttf	
-        print('[+] Writing to disk...')	
+        print('[+] Generating .ttf file...')	
         font = TTFont()	
         font.importXML(args.o + '.ttx')	
         font.save(args.o + '.ttf')
 
         if args.w:
+            print('[+] Generating .woff2 file...')
             woff2.compress(input_file=args.o +'.ttf', output_file=args.o + '.woff2')
 
     elif extension == 'ttx':	
