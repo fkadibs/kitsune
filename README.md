@@ -25,7 +25,7 @@ optional arguments:
   -w          generate woff2 webfont
 ```
 
-Generate a cipher font from an existing TrueType file, which will create `output.ttf` and `output.ttx` files. 
+Generate a cipher font from an existing TrueType file, which will create `.ttf` and `.ttx` files. 
 
 ```console
 $ kitsune Roboto.ttf -o example -c "Click here to reset your password"
