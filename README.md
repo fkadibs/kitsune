@@ -43,5 +43,3 @@ $ kitsune example.ttx -c "Creating more ciphertext"
 
 KJfCLbgB RZJf EbimfJLfAL
 ```
-
-![kitsune web embed](/examples/example.PNG)
