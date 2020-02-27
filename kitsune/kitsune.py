@@ -24,7 +24,7 @@ subs = { x: y for x, y in zip(normal, rand)}
 def main():
     if extension == 'ttf':	
         # convert source to xml	
-        print('[+] Generating .ttx file..')
+        print('[+] Generating {}.ttx file..'.format(args.o))
         font = TTFont(args.filename)	
         font.saveXML(args.o + '.ttx')	
         
@@ -37,13 +37,13 @@ def main():
         font_tree.write(args.o + '.ttx')	
 
         # convert to ttf	
-        print('[+] Generating .ttf file...')	
+        print('[+] Generating {}.ttf file...'.format(args.o))	
         font = TTFont()	
         font.importXML(args.o + '.ttx')	
         font.save(args.o + '.ttf')
 
         if args.w:
-            print('[+] Generating .woff2 file...')
+            print('[+] Generating {}.woff2 file...'.format(args.o))
             woff2.compress(input_file=args.o +'.ttf', output_file=args.o + '.woff2')
 
     elif extension == 'ttx':	
