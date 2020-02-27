@@ -12,7 +12,17 @@ $ pip install .
 ### Usage
 
 ```console
-$ kitsune <filename> [text]
+$ kitsune -h
+usage: kitsune [-h] [-c TEXT] [-o FILE] [-w] filename
+
+positional arguments:
+  filename    input filename
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -c TEXT     generate ciphertext
+  -o FILE     output file name
+  -w          generate woff2 webfont
 ```
 
 You can generate a cipher font from an existing TrueType file, which will create `output.ttf` and `output.ttx` files. Optionally, provide a string of text to convert to ciphertext.
