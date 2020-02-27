@@ -1,6 +1,6 @@
 # 🦊 Kitsune
 
-Kitsune is a tool for generating randomized substitution cipher fonts, useful for bypassing static analysis for red team/penetration testing engagements. Scanners will see random ASCII characters, but clients will render human-readable text.
+Kitsune generates randomized substitution cipher fonts, useful for bypassing static analysis for red team/penetration testing engagements. Scanners will see random ASCII characters, but clients will render human-readable text.
 
 ### Installation
 
