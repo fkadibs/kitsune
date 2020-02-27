@@ -25,7 +25,7 @@ optional arguments:
   -w          generate woff2 webfont
 ```
 
-You can generate a cipher font from an existing TrueType file, which will create `output.ttf` and `output.ttx` files. Optionally, you can specify an output filename or provide a string of text to convert to ciphertext.
+Generate a cipher font from an existing TrueType file, which will create `output.ttf` and `output.ttx` files. Optionally, you can specify an output filename or provide a string of text to convert to ciphertext.
 
 ```console
 $ kitsune Roboto.ttf -o example -c "Click here to reset your password"
@@ -36,7 +36,7 @@ $ kitsune Roboto.ttf -o example -c "Click here to reset your password"
 KsbEu mfJf LZ JfpfL YZTJ iCpphZJw
 ```
 
-You can generate ciphertex from an existing Kitsune `.ttx` file, providing a string as a command-line argument.
+Generate ciphertex from an existing Kitsune `.ttx` file, providing a string as a command-line argument.
 
 ```console
 $ kitsune example.ttx -c "Creating more ciphertext"
