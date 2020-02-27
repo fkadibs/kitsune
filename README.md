@@ -18,7 +18,7 @@ $ kitsune <filename> [text]
 You can generate a cipher font from an existing TrueType file, which will create `output.ttf` and `output.ttx` files. Optionally, provide a string of text to convert to ciphertext.
 
 ```console
-$ kitsune Roboto.ttf "Click here to reset your password"
+$ kitsune Roboto.ttf -c "Click here to reset your password"
 [+] Loading source font...
 [+] Generating .ttx file...
 [+] Generating .ttf file...
@@ -29,7 +29,7 @@ KsbEu mfJf LZ JfpfL YZTJ iCpphZJw
 You can generate ciphertex from an existing Kitsune `.ttx` file, providing a string as a command-line argument.
 
 ```console
-$ kitsune output.ttx "Creating more ciphertext"
+$ kitsune output.ttx -c "Creating more ciphertext"
 
 KJfCLbgB RZJf EbimfJLfAL
 ```
