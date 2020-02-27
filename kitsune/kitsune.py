@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('filename', action='store', help='input filename')
 parser.add_argument('-c', action='store', metavar='TEXT', help='generate ciphertext')
 parser.add_argument('-o', action='store', metavar='FILE', default='output', help='output file name')
-parser.add_argument('-w', action='store_true', help='generate woff2 webfont')
+parser.add_argument('-w', action='store_true', help='generate webfont')
 args = parser.parse_args()
 
 extension = args.filename.split('.')[-1]
