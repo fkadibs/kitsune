@@ -20,8 +20,7 @@ OUT_TTX, OUT_TTF, OUT_WOF = (args.o + i for i in ['.ttx', '.ttf','.woff2'])
 normal = [l for l in ascii_letters]	
 rand = [l for l in ascii_letters]	
 shuffle(rand) # modify in place	
-subs = { x: y for x, y in zip(normal, rand)}	
-
+subs = { y: x for x, y in zip(normal, rand) }	
 
 def main():
     if EXT == 'ttf':	
@@ -36,8 +35,8 @@ def main():
         font_root = font_tree.getroot()
 
         for letter in font_root.iter('map'):	
-            if letter.attrib['name'] in subs.keys():	
-                letter.set('name', subs[letter.attrib['name']])
+            if letter.attrib['name'] in subs.keys():
+                letter.set('code', hex(ord(subs[letter.attrib['name']])))
         
         font_tree.write(OUT_TTX)	
 
@@ -54,12 +53,10 @@ def main():
     elif EXT == 'ttx':	
         # load the xml	
         font_root = ET.parse(args.filename).getroot()
-
-        for letter in font_root.iter('map'):	
-            if letter.attrib['name'] in normal:	
-                # reverse map keys by cmap hex code
-                hex_code = ''.join(letter.attrib['code'][-2::])
-                subs[chr(int(hex_code, 16))] = letter.attrib['name']
+        for l in normal:
+            for letter in font_root.iter('map'):
+                if letter.attrib['code'] == hex(ord(l)):
+                    subs[letter.attrib['name']] = l
 
     if args.c:	
         print('\n' + ''.join(subs[l] if l in subs.keys() else l for l in args.c))
