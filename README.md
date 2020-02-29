@@ -43,4 +43,3 @@ $ kitsune Sxample.ttx -c "Creating more ciphertext"
 
 bZtQGysJ xWZt VyuCtZGtcG
 ```
-
