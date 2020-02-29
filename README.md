@@ -22,7 +22,6 @@ optional arguments:
   -h, --help  show this help message and exit
   -c TEXT     generate ciphertext
   -o FILE     output file name
-  -w          generate webfont
 ```
 
 Generate a cipher font from an existing TrueType file, which will create `.ttf` and `.ttx` files. 
