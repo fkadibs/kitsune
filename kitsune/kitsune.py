@@ -10,11 +10,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('filename', action='store', help='input filename')
 parser.add_argument('-c', action='store', metavar='TEXT', help='generate ciphertext')
 parser.add_argument('-o', action='store', metavar='FILE', default='output', help='output file name')
-parser.add_argument('-w', action='store_true', help='generate webfont')
 args = parser.parse_args()
 
 EXT = args.filename.split('.')[-1]
-OUT_TTX, OUT_TTF, OUT_WOF = (args.o + i for i in ['.ttx', '.ttf','.woff2'])
+OUT_TTX, OUT_TTF = (args.o + i for i in ['.ttx', '.ttf'])
 
 # generate random substitutions	
 normal = [l for l in ascii_letters]	
@@ -45,10 +44,6 @@ def main():
         font = TTFont()	
         font.importXML(OUT_TTX)	
         font.save(OUT_TTF)
-
-        if args.w:
-            print('[+] Generating {} file...'.format(OUT_WOF))
-            woff2.compress(input_file=OUT_TTF, output_file=OUT_WOF)
 
     elif EXT == 'ttx':	
         # load the xml	
