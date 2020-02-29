@@ -42,6 +42,6 @@ bMyVO CtZt GW ZtItG mWeZ uQIISWZA
 ```
 
 
-The generated font can b e embedded into documents or loaded remotely in HTML emails or web pages:
+The generated font can be embedded into documents or loaded remotely in HTML emails or web pages:
 
 ![seeing is believing](example.png)
