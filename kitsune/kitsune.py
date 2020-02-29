@@ -8,12 +8,12 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('filename', action='store', help='input filename')
-parser.add_argument('-c', action='store', metavar='TEXT', help='generate ciphertext')
-parser.add_argument('-o', action='store', metavar='FILE', default='output', help='output file name')
+parser.add_argument('-t', action='store', metavar='TEXT', help='generate ciphertext')
+parser.add_argument('-f', action='store', metavar='FILE', default='output', help='output file name')
 args = parser.parse_args()
 
 EXT = args.filename.split('.')[-1]
-OUT_TTX, OUT_TTF = (args.o + i for i in ['.ttx', '.ttf'])
+OUT_TTX, OUT_TTF = (args.f + i for i in ['.ttx', '.ttf'])
 
 # generate random substitutions	
 normal = [l for l in ascii_letters]	
@@ -53,8 +53,8 @@ def main():
                 if letter.attrib['code'] == hex(ord(l)):
                     subs[letter.attrib['name']] = l
 
-    if args.c:	
-        print('\n' + ''.join(subs[l] if l in subs.keys() else l for l in args.c))
+    if args.t:	
+        print('\n' + ''.join(subs[l] if l in subs.keys() else l for l in args.t))
 
 
 if __name__ == '__main__':
