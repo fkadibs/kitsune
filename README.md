@@ -20,23 +20,23 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
-  -c TEXT     generate ciphertext
-  -o FILE     output file name
+  -f FILE     output file name
+  -t TEXT     generate ciphertext
 ```
 
 Generate a cipher font from an existing TrueType file, which will create `.ttf` and `.ttx` files. 
 
 ```console
-$ kitsune Roboto.ttf -o Sample 
+$ kitsune Roboto.ttf -f Sample
 [+] Loading source font...
 [+] Generating Sample.ttx file...
 [+] Generating Sample.ttf file...
 ```
 
-You can generate ciphertex from an existing `.ttx` file, providing a string as a command-line argument.
+You can generate ciphertex with an existing `.ttx` file, providing a string as a command-line argument.
 
 ```console
-$ kitsune Sample.ttx -c "Click here to reset your password"
+$ kitsune Sample.ttx -t "Click here to reset your password"
 
 bMyVO CtZt GW ZtItG mWeZ uQIISWZA
 ```
