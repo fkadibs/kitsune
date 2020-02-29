@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET	
 from fontTools.ttLib import TTFont, woff2
-from string import ascii_letters	
+from string import ascii_letters
 from random import shuffle	
 import argparse
 import sys	
@@ -8,18 +8,18 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('filename', action='store', help='input filename')
+parser.add_argument('-o', action='store', metavar='OUT_FILE', default='output', help='output filename')
 parser.add_argument('-t', action='store', metavar='TEXT', help='generate ciphertext')
-parser.add_argument('-f', action='store', metavar='FILE', default='output', help='output file name')
 args = parser.parse_args()
 
 EXT = args.filename.split('.')[-1]
-OUT_TTX, OUT_TTF = (args.f + i for i in ['.ttx', '.ttf'])
+OUT_TTX, OUT_TTF = (args.o + i for i in ['.ttx', '.ttf'])
 
 # generate random substitutions	
-normal = [l for l in ascii_letters]	
+asci = [l for l in ascii_letters]	
 rand = [l for l in ascii_letters]	
 shuffle(rand) # modify in place	
-subs = { y: x for x, y in zip(normal, rand) }	
+subs = { y: x for x, y in zip(asci, rand) }	
 
 def main():
     if EXT == 'ttf':	
@@ -48,13 +48,13 @@ def main():
     elif EXT == 'ttx':	
         # load the xml	
         font_root = ET.parse(args.filename).getroot()
-        for l in normal:
-            for letter in font_root.iter('map'):
-                if letter.attrib['code'] == hex(ord(l)):
-                    subs[letter.attrib['name']] = l
+        for letter in asci:
+            for item in font_root.iter('map'):
+                if item.attrib['code'] == hex(ord(l)):
+                    subs[item.attrib['name']] = letter
 
     if args.t:	
-        print('\n' + ''.join(subs[l] if l in subs.keys() else l for l in args.t))
+        print('\n' + ''.join(subs[letter] if letter in subs.keys() else letter for letter in args.t))
 
 
 if __name__ == '__main__':
