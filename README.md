@@ -13,7 +13,7 @@ $ pip install .
 
 ```console
 $ kitsune -h
-usage: kitsune [-h] [-c TEXT] [-o FILE] [-w] filename
+usage: kitsune [-h] [-f FILE] [-t TEXT] filename
 
 positional arguments:
   filename    input filename
