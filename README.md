@@ -2,8 +2,6 @@
 
 Kitsune generates randomized substitution cipher fonts, useful for bypassing static analysis for red team/penetration testing engagements. Scanners will see random ASCII characters, but clients will render human-readable text.
 
-![seeing is believing](example.png)
-
 ### Installation
 
 ```console
@@ -38,7 +36,12 @@ $ kitsune Roboto.ttf -o Sample -c "Click here to reset your password"
 bMyVO CtZt GW ZtItG mWeZ uQIISWZA
 ```
 
-Generate ciphertex from an existing Kitsune `.ttx` file, providing a string as a command-line argument.
+The resulting font can be embedded into documents or loaded remotely in HTML emails or web pages:
+
+![seeing is believing](example.png)
+
+
+You can generate ciphertex from an existing `.ttx` file, providing a string as a command-line argument.
 
 ```console
 $ kitsune Sample.ttx -c "Creating more ciphertext"
