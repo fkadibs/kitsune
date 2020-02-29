@@ -27,23 +27,21 @@ optional arguments:
 Generate a cipher font from an existing TrueType file, which will create `.ttf` and `.ttx` files. 
 
 ```console
-$ kitsune Roboto.ttf -o Sample -c "Click here to reset your password"
+$ kitsune Roboto.ttf -o Sample 
 [+] Loading source font...
 [+] Generating Sample.ttx file...
 [+] Generating Sample.ttf file...
-
-bMyVO CtZt GW ZtItG mWeZ uQIISWZA
 ```
-
-The resulting font can be embedded into documents or loaded remotely in HTML emails or web pages:
-
-![seeing is believing](example.png)
-
 
 You can generate ciphertex from an existing `.ttx` file, providing a string as a command-line argument.
 
 ```console
-$ kitsune Sample.ttx -c "Creating more ciphertext"
+$ kitsune Sample.ttx -c "Click here to reset your password"
 
-bZtQGysJ xWZt VyuCtZGtcG
+bMyVO CtZt GW ZtItG mWeZ uQIISWZA
 ```
+
+
+The resulting font can be embedded into documents or loaded remotely in HTML emails or web pages:
+
+![seeing is believing](example.png)
