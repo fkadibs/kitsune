@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
   name = 'kitsune',
-  version = '0.0.1',
+  version = '0.0.2',
   author = 'disaster_byte',
   install_requires = ['fonttools'],
   packages = ['kitsune'],
