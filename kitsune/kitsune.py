@@ -50,7 +50,7 @@ def main():
         font_root = ET.parse(args.filename).getroot()
         for letter in asci:
             for item in font_root.iter('map'):
-                if item.attrib['code'] == hex(ord(l)):
+                if item.attrib['code'] == hex(ord(letter)):
                     subs[item.attrib['name']] = letter
 
     if args.t:	
